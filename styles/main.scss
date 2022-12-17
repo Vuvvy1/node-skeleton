@@ -16,3 +16,21 @@ body {
     rgb(177, 0, 0) 100%
   );
 }
+
+
+.nav{
+  display:flex;
+  height : 120px;
+  background-color: red;
+  font-family: "Bungee", cursive;
+  color: white;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  justify-content: space-between;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+
+}
