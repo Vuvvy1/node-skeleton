@@ -22,21 +22,15 @@
   <nav>
     <span>Pokemon Traders</span>
   </nav>
-  <table class="table">
-    <thead>
-      <td>
-        <tr>
-          <th scope='col'>card 1</th>
-          <th scope='col'>card 2</th>
-          <th scope='col'>card 3</th>
-          <th scope='col'>card 4</th>
-        </tr>
-          <th scope='col'>card 5</th>
-          <th scope='col'>card 6</th>
-          <th scope='col'>card 7</th>
-          <th scope='col'>card 8</th>
-      </td>
-    </thead>
+
+  <% for(let card of cards) {%>
+    <div><%- cards.indexOf(card) %></div>
+    <div ><%- card.title %></div>
+    <img src="<%- card.thumbnail_photo_url %>" title="<%- card.title %>" alt="alt text here"/>
+    <div ><%- card.cost %></div>
+    <div><%- card.active %></div>
+
+    <% } %>
 </body>
 
 </html>
