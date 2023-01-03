@@ -22,15 +22,35 @@
   <nav>
     <span>Pokemon Traders</span>
   </nav>
+  <% for(var i = 0; i < cards.length; i++) { %>
+    <% if (i === 0 || i % 3 === 0) { %>
+      <div class="row">
+    <% } %>
+      <div class="col-sm">
+        <div class="card border-danger mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+               <h4 class="card-title"><%= cards[i].title %></h4>
+               <div ><%- cards[i].title %></div>
+               <img src="<%- cards[i].thumbnail_photo_url %>" title="<%- cards[i].title %>" alt="alt text here"/>
+               <div ><%- cards[i].cost %></div>
+               <div><%- cards[i].active %></div>
+            </div>
+        </div>
+      </div>
+    <% if (i === 0 || i % 3 === 0) { %>
+      </div>
+    <% } %>
+  <% } %>
 
-  <% for(let card of cards) {%>
+
+  <!-- <% for(let card of cards) {%>
     <div><%- cards.indexOf(card) %></div>
     <div ><%- card.title %></div>
     <img src="<%- card.thumbnail_photo_url %>" title="<%- card.title %>" alt="alt text here"/>
     <div ><%- card.cost %></div>
     <div><%- card.active %></div>
 
-    <% } %>
+    <% } %> -->
 </body>
 
 </html>
