@@ -1,6 +1,26 @@
 // See: https://sass-lang.com/
+span {
+  padding: 10px;
+}
+.container {
+  max-width: 1080px;
+  min-width: 1040px;
+  margin: 0 auto;
+}
+.img-row {
+  display: flex;
+  width: 1080px;
+  height: auto;
+  flex-wrap: wrap;
+  .img-container {
+    width: 250px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
 
-body,
-html {
-  margin: 0;
+    img {
+      margin: 15px;
+
+      }
+    }
 }
