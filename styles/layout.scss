@@ -1,11 +1,15 @@
 // See: https://sass-lang.com/
 span {
-  padding: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: center;
 }
 .container {
   max-width: 1080px;
   min-width: 1040px;
   margin: 0 auto;
+  margin-bottom: 100px;
+  padding-left: 10px;
 }
 .img-row {
   display: flex;
@@ -23,4 +27,19 @@ span {
 
       }
     }
+}
+
+.card{
+  width: 80px;
+
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+
+}
+.container-filter {
+  margin-right: 100px;
 }

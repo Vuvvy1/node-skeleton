@@ -18,6 +18,8 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/filter.js"></script>
+
 </head>
 
 <body>
@@ -25,56 +27,116 @@
     <h1 class="page-title">Pokemon Traders</h1>
   </nav>
     <body>
+      <div class="horizontal">
+      <div class="container-filter">
+        <div class="row">
+          <div class=" col-12 col-md-2">
+            <div class="card px-2">
+              <h2 class="text-center">Filter by</h2>
+              <hr>
+              <h4>Price:</h4>
+              <div class="card-body">
+                <form id="price-range-form">
+                  <label for="min-price" class="form-label">Min price: </label>
+                  <span id="min-price-txt">$0</span>
+                  <input type="range" class="form-range" min="0" max="99" id="min-price" step="1" value="0">
+                  <label for="max-price" class="form-label">Max price: </label>
+                  <span id="max-price-txt">$100</span>
+                  <input type="range" class="form-range" min="1" max="100" id="max-price" step="1" value="100">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-10">
+            <div class="card">
+              <div class="card-body">
+                <div class="row" id="display-items-div">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div class="container">
         <div class="img-row">
           <div class="img-container">
             <img src="/docs/card1.png"/>
-            <a href="/liked" > <i class="fa-regular fa-heart"></i>
-            </a>
+
             <span>Title</span>
             <span>Price</span>
             <span>Description</span>
             <span>Status</span>
-
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card2.png"/>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
             <a href="/liked" > <i class="fa-regular fa-heart"></i>
             </a>
-            <span>hello random text hello random text hello random text hello random text</span>
           </div>
           <div class="img-container">
             <img src="/docs/card3.png"/>
-           <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card4.png"/>
-             <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card5.png"/>
-             <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card6.png"/>
-             <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card7.png"/>
-             <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
           <div class="img-container">
             <img src="/docs/card8.png"/>
-             <a href="/liked" > <i class="fa-regular fa-heart"></i>
-          </a>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+            <a href="/liked" > <i class="fa-regular fa-heart"></i>
+            </a>
           </div>
         </div>
       </div>
+    </div>
     </body>
 
 
