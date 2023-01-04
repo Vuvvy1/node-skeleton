@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <%- include('partials/_header') %>
+    <h1 class="page-title">Pokemon Traders</h1>
+
+    <body>
+      <form class="favorite" action="/liked" method="POST">
+      <div class="container">
+        <div class="img-row">
+          <div class="img-container">
+            <img src="/docs/card1.png"/>
+            <span>Title</span>
+            <span>Price</span>
+            <span>Description</span>
+            <span>Status</span>
+
+          </div>
+          <div class="img-container">
+            <img src="/docs/card2.png"/>
+            <span>hello random text hello random text hello random text hello random text</span>
+          </div>
+          <div class="img-container">
+            <img src="/docs/card3.png"/>
+           <a href="/liked" > <i class="fa-regular fa-heart"></i>
+          </a>
+          </div>
+          <!-- <div class="img-container">
+            <img src="/docs/card4.png"/>
+          </div>
+          <div class="img-container">
+            <img src="/docs/card5.png"/>
+          </div>
+          <div class="img-container">
+            <img src="/docs/card6.png"/>
+          </div>
+          <div class="img-container">
+            <img src="/docs/card7.png"/>
+          </div>
+          <div class="img-container">
+            <img src="/docs/card8.png"/>
+          </div> -->
+        </div>
+      </div>
+    </body>
+
+
+</html>
