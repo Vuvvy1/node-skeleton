@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+
 app.set('view engine', 'ejs');
 // hello
 
@@ -34,6 +35,8 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
+const db = require('./database');
+//const database = require('database')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -49,8 +52,24 @@ app.use('/register', registerRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+const thing = "helloworld"
+
+// app.get('/', (req, res) => {
+//   const testVar = {test: thing}
+//   res.render('index', testVar);
+// });
 app.get('/', (req, res) => {
-  res.render('index');
+  console.log("getAllCards");
+  db.getAllCards(req.query, 20)
+  .then(cards => {
+    const tempateVar = {cards: cards}
+    res.render('index', tempateVar);
+    // res.send({cards})
+  })
+  .catch(e => {
+    console.error(e);
+    res.send(e)
+  });
 });
 
 app.listen(PORT, () => {
