@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../database');
+const cookieSession = require("cookie-session");
 
 router.get('/', (req, res) => {
   res.render('users');
@@ -22,7 +23,8 @@ router.post("/login", (req, res) => {
   // const id = req.params.id;
   console.log("id ➤", req.body.user_id);
   const user_id = req.body.user_id;
-  // req.session.user_id = user_id;
+  console.log("user_id ➤", user_id);
+  req.session.user_id = user_id;
   db.getUserWithId(user_id)
     .then(user => {
       // console.log(user);
