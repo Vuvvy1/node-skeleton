@@ -5,10 +5,15 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+// const cookieSession = require('cookie-session');
+// const methodOverride = require('method-override');
+// const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+// ENCRYPTION
+// const bcrypt = require('bcryptjs');
 
 app.set('view engine', 'ejs');
 // hello
@@ -71,6 +76,11 @@ app.get('/', (req, res) => {
     res.send(e)
   });
 });
+
+app.get("/login", (req, res) => {
+  res.render('login');
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

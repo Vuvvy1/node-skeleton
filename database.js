@@ -13,7 +13,18 @@ module.exports = {
       .query(queryString)
       .then((res) => res.rows)
       .catch((err) => console.error("query error", err.stack));
-}
+},
+getUserWithId: (id) => {
+  return pool
+    .query(`SELECT * FROM users WHERE name = $1;`, [id])
+    .then(res => {
+      return res.rows[0] || null;
+    })
+    .catch(err => {
+      console.log('Error:', err.stack);
+    });
+},
+
 // exports.frontPageCards = frontPageCards;
   }
 
