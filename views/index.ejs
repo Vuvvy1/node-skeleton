@@ -19,43 +19,25 @@
 
 <body>
   <%- include('partials/_header') %>
-  <nav>
-    <span>Pokemon Traders</span>
-  </nav>
   <table>
     <tbody>
-  <% for(var i = 0; i < cards.length; i++) { %>
-    <% if (i % 4 === 0 && i !== 0) {  %>
-      <% console.log(i) %>
-      <tr></tr>
-    <% } %>
-    <td>
-      <div class="col-sm">
-        <div class="card border-danger mb-3" style="max-width: 20rem;">
-            <div class="card-body">
-               <h2 class="card-title"><%= cards[i].title %></h2>
-               <img src="<%- cards[i].thumbnail_photo_url %>" title="<%- cards[i].title %>" alt="alt text here"/>
-               <div ><%- cards[i].cost %></div>
-               <% if (cards[i].active === false) { %>
-               <h3>Sold Out</h3>
-               <% } %>
-            </div>
-        </div>
-      </div>
-    </td>
-
-  <% } %>
-</tbody>
-</table>
-
-  <!-- <% for(let card of cards) {%>
-    <div><%- cards.indexOf(card) %></div>
-    <div ><%- card.title %></div>
-    <img src="<%- card.thumbnail_photo_url %>" title="<%- card.title %>" alt="alt text here"/>
-    <div ><%- card.cost %></div>
-    <div><%- card.active %></div>
-
-    <% } %> -->
+      <% for(var i = 0; i < cards.length; i++) { %>
+        <% if (i % 4 === 0 && i !== 0) {  %>
+          <tr></tr>
+      <% } %>
+        <td>
+          <div class="card-body">
+            <h2 class="card-title"><%= cards[i].title %></h2>
+            <img src="<%- cards[i].thumbnail_photo_url %>"/>
+            <div ><%- cards[i].cost %></div>
+              <% if (cards[i].active === false) { %>
+                <h3>Sold Out</h3>
+              <% } %>
+          </div>
+         </td>
+       <% } %>
+    </tbody>
+  </table>
 </body>
 
 </html>
