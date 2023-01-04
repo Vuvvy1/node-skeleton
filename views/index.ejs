@@ -24,7 +24,7 @@
       <% for(var i = 0; i < cards.length; i++) { %>
         <% if (i % 4 === 0 && i !== 0) {  %>
           <tr></tr>
-      <% } %>
+        <% } %>
         <td>
           <div class="card-body">
             <h2 class="card-title"><%= cards[i].title %></h2>
@@ -34,8 +34,8 @@
                 <h3>Sold Out</h3>
               <% } %>
           </div>
-         </td>
-       <% } %>
+        </td>
+      <% } %>
     </tbody>
   </table>
 </body>
