@@ -3,8 +3,10 @@ const router  = express.Router();
 const userQueries = require('../db/queries/users');
 
 
-router.get("/", (req, res) => {
-  res.render('login');
+
+router.get("/:id", (req, res) => {
+  // save id in session
+  res.redirect('/');
 });
 
 module.exports = router;
