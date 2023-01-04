@@ -25,24 +25,25 @@
   <table>
     <tbody>
   <% for(var i = 0; i < cards.length; i++) { %>
-    <% if (i % 3 === 0) { %>
-      <tr>
+    <% if (i % 4 === 0 && i !== 0) {  %>
+      <% console.log(i) %>
+      <tr></tr>
     <% } %>
     <td>
       <div class="col-sm">
         <div class="card border-danger mb-3" style="max-width: 20rem;">
             <div class="card-body">
-               <h4 class="card-title"><%= cards[i].title %></h4>
+               <h2 class="card-title"><%= cards[i].title %></h2>
                <img src="<%- cards[i].thumbnail_photo_url %>" title="<%- cards[i].title %>" alt="alt text here"/>
                <div ><%- cards[i].cost %></div>
-               <div><%- cards[i].active %></div>
+               <% if (cards[i].active === false) { %>
+               <h3>Sold Out</h3>
+               <% } %>
             </div>
         </div>
       </div>
     </td>
-    <% if (i % 3 === 0) { %>
-    </tr>
-    <% } %>
+
   <% } %>
 </tbody>
 </table>
