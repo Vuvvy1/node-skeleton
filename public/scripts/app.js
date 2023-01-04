@@ -6,8 +6,9 @@
 $(".fa-heart").click(function(event){
   //alert("monkeyfuzz");
   event.preventDefault();
+  console.log(event.target.id)
   $.ajax({
-    url: "/monkeyfuzz",
+    url: "/..",
     method: "POST"
   })
 });
@@ -21,4 +22,4 @@ $(".fa-heart").click(function(event){
 
 // I tag needs specific ID in order to be easily used in the ajax call that will add a row to the likes table
 
-//id= "card1" 
+//id= "card1"
