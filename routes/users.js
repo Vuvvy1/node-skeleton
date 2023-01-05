@@ -23,9 +23,8 @@ router.get("/login", (req, res) => {
 router.post("/login", (req, res) => {
   // console.log('req.params.id: ', req.params.id);
   // const id = req.params.id;
-  console.log("id ➤", req.body.user_id);
   const user_id = req.body.user_id;
-  console.log("user_id ➤", user_id);
+
   req.session.user_id = user_id;
   db.getUserWithId(user_id)
     .then(user => {
@@ -44,7 +43,7 @@ router.post("/login", (req, res) => {
       }
 
       //if admin goes to orders
-      return res.redirect('/');
+      return res.redirect('/adminPage');
     })
     .catch(err => {
       res

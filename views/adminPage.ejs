@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/filter.js"></script>
+
+</head>
+
+<body>
+  <%- include('partials/_header') %>
+  <table>
+    <tbody>
+      <% for(var i = 0; i < cards.length; i++) { %>
+        <% if (i % 5 === 0 && i !== 0) {  %>
+          <tr></tr>
+        <% } %>
+        <td>
+          <div class="card-body">
+            <h2 class="card-title"><%= cards[i].title %></h2>
+            <img src="<%- cards[i].thumbnail_photo_url %>"/>
+            <div ><%- cards[i].cost %>
+              <% if (cards[i].active === false) { %>
+                <button type="submit" class="in-stock">mark as IN STOCK</button>
+                <a>Sold Out</a>
+              <% } else {%>
+              <button type="submit" class="sold-out" border-color="blue">mark as SOLD OUT</button>
+              <% } %>
+          </div>
+        </td>
+      <% } %>
+    </tbody>
+  </table>
+    <h1 class="page-title">Pokemon Traders</h1>
+  </nav>
+    <body>
+      <div class="horizontal">
+      <div class="container-filter">
+        <div class="row">
+          <div class=" col-12 col-md-2">
+            <div class="card px-2">
+              <h2 class="text-center">Filter by</h2>
+              <hr>
+              <h4>Price:</h4>
+              <div class="card-body">
+                <form id="price-range-form">
+                  <label for="min-price" class="form-label">Min price: </label>
+                  <span id="min-price-txt">$0</span>
+                  <input type="range" class="form-range" min="0" max="99" id="min-price" step="1" value="0">
+                  <label for="max-price" class="form-label">Max price: </label>
+                  <span id="max-price-txt">$100</span>
+                  <input type="range" class="form-range" min="1" max="100" id="max-price" step="1" value="100">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-10">
+            <div class="card">
+              <div class="card-body">
+                <div class="row" id="display-items-div">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </body>
+
+
+</body>
+
+</html>
