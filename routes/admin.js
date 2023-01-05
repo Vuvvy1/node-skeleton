@@ -13,19 +13,19 @@ const cookieSession = require("cookie-session");
 module.exports = function(router, db) {
 
 router.get('/adminPage', (req, res) => {
-  // const user_id = req.body.user_id;
-  // req.session.user_id = user_id;
-  // db.getUserWithId(user_id)
-  //   .then(users => {
-  //     const tempateVar = {
-  //       userID: req.session.user_id
-  //     };
-  //     res.render('adminPage', tempateVar);
-  //   })
-  //   .catch(e => {
-  //     console.error(e);
-  //     res.send(e)
-  //   });
+  const user_id = req.body.user_id;
+  req.session.user_id = user_id;
+  db.getUserWithId(user_id)
+    .then(users => {
+      const tempateVar = {
+        userID: req.session.user_id
+      };
+      res.render('adminPage', tempateVar);
+    })
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    });
   res.render('adminPage')
 });
 

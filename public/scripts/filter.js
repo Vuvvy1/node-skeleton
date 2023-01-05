@@ -48,12 +48,13 @@ function showAllItems() {
         rowHtml += `
           <div class="card-body">
             <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
-            <img class="card-picture" "submit()" src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
+            <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
             <div >
               <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
               </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
-              <button type="submit" class="login-button">Add to cart</button>
+              ${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>': '<box style="color: red;">Sold Out</box>'}
+
             </div>
           </div>
           `
