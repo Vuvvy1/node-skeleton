@@ -5,7 +5,7 @@ const userQueries = require('../db/queries/users');
 
 
 router.get("/liked", (req, res) => {
-  res.redirect('/');
+  res.render('liked');
 });
 
 

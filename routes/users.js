@@ -10,6 +10,8 @@ const router  = express.Router();
 const db = require('../database');
 const cookieSession = require("cookie-session");
 
+module.exports = function(router, db) {
+
 router.get('/', (req, res) => {
   res.render('users');
 });
@@ -38,7 +40,7 @@ router.post("/login", (req, res) => {
       console.log(user.role_id);
       //if customer
       if (user.role_id === 1) {
-        return res.redirect('/');
+        return res.redirect('/liked');
       }
 
       //if admin goes to orders
@@ -66,4 +68,6 @@ router.post("/logout", (req, res) => {
   //
 });
 
-module.exports = router;
+return router;
+
+};
