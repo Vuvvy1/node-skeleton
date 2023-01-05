@@ -55,8 +55,9 @@ router.post("/login", (req, res) => {
 // router.get("/register", (req, res) => {
 //   res.render('register');
 // });
-router.post("/register", (req, res) => {
-  //
+router.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
 });
 router.get("/favourites", (req, res) => {
   res.render('favourites');

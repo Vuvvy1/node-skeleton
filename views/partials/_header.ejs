@@ -7,10 +7,16 @@
     <div class="liked">
       <a href="/liked">My favorites </a>
 
-        <form action="/users/login" method="POST" >
-          <input type="text" placeholder="ID" class="login-input" name="user_id">
-          <button type="submit" class="login-button">Login</button>
-        </form>
+      <div>
+        <% if (!userID) { %>
+          <form action="/users/login" method="POST" >
+            <input type="text" placeholder="ID" class="login-input" name="user_id">
+            <button type="submit" class="login-button">Login</button>
+          </form>
+        <% } else { %>
+          <p class="user-greeting">Welcome, <%= userID %></p>
+          <form method="POST" action="users/logout"><button class="logout-button" type="submit">Logout</button></form>
+        <% } %>
     </div>
 
 

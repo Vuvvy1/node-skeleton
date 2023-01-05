@@ -46,6 +46,7 @@ const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
 const db = require('./database');
+const userfavorites = require('./routes/liked');
 //const database = require('database')
 
 // Mount all resource routes
@@ -63,13 +64,17 @@ const userRouter = express.Router();
 userRoutes(userRouter, db);
 app.use("/users", userRouter);
 
+// User favorites
+const favorites = express.Router();
+userfavorites(favorites, db);
+app.use("/liked", favorites);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-const thing = "helloworld"
 
 // app.get('/', (req, res) => {
 //   const testVar = {test: thing}
@@ -79,7 +84,10 @@ app.get('/', (req, res) => {
   console.log("getAllCards");
   db.getAllCards(req.query, 20)
   .then(cards => {
-    const tempateVar = {cards: cards}
+    const tempateVar = {
+      cards: cards,
+      userID: req.session.user_id
+    };
     res.render('index', tempateVar);
     // res.send({cards})
   })
@@ -87,6 +95,10 @@ app.get('/', (req, res) => {
     console.error(e);
     res.send(e)
   });
+});
+
+app.get("/liked", (req, res) => {
+  res.render('liked');
 });
 
 app.get("/login", (req, res) => {

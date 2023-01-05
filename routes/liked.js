@@ -3,7 +3,7 @@ const router  = express.Router();
 const baddb = require('../database'); //refactor to use db folder
 const db = require('../db/connection');
 
-
+module.exports = function(router, db) {
 
 router.get('/', (req, res) => {
   console.log("getAllLikedCards");
