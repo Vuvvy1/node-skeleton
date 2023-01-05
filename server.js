@@ -35,6 +35,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
+const likedRoutes = require('./routes/liked');
 const db = require('./database');
 //const database = require('database')
 
@@ -46,6 +47,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
+app.use('/liked', likedRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
