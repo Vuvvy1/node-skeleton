@@ -44,20 +44,36 @@ function showAllItems() {
       for (const cardInRow of cardRow) {
         rowHtml += `
           <div class="card-body">
-            <h2 class="card-title">${cardInRow.title}</h2>
+            <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
             <img src="${cardInRow.thumbnail_photo_url}"/>
-            <div >${cardInRow.cost}</div>
-              ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
+            <div >
+              <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
+              </a>
+              $${cardInRow.cost}.00
+              <button type="submit" class="login-button">Add to cart</button>
+            </div>
           </div>
-        `
-      }
-      rowHtml += `</div>`
+          `
+        }
+        rowHtml += `</div>`
 
-      // Append the row to the cardsContainer
-      $(rowHtml).appendTo(cardsContainer)
-    }
-  })
-}
+        // Append the row to the cardsContainer
+        $(rowHtml).appendTo(cardsContainer)
+      }
+    })
+  }
+  //   <div class="card-body">
+  //   <h2 class="card-title"><%= cards[i].title %></h2>
+  //   <img src="<%- cards[i].thumbnail_photo_url %>"/>
+  //   <div ><%- cards[i].cost %>
+  //     <% if (cards[i].active === false) { %>
+  //       <a>Sold Out</a>
+  //     <% } %>
+  //     <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
+
+  //     </a>
+  //     <button type="submit" class="login-button">Add to cart</button>
+  // </div>
 
 function showAllFiltered() {
   console.log('hello')
@@ -86,7 +102,7 @@ function showAllFiltered() {
           <div class="card-body">
             <h2 class="card-title">${cardInRow.title}</h2>
             <img src="${cardInRow.thumbnail_photo_url}"/>
-            
+            <div >$${cardInRow.cost}.00</div>
               ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
               <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
               </a>
