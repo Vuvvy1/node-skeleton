@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   const user_id = 1 //bc no cookies
   baddb.getAllLikedCards(user_id)
   .then(cards => {
+    console.log("cards" , cards)
     const tempateVar = {cards: cards}
     res.render('liked', tempateVar); //not a path its a template
     // res.send({cards})
