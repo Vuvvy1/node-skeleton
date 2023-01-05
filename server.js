@@ -48,7 +48,7 @@ const cardsQueries = require('./db/queries/cards');
 const db = require('./db/connection')
 // const database = require('database')
 const cardsRoutes = require('./routes/cards');
-const db = require('./database');
+//const db = require('./database');
 const adminPage = require('./routes/admin');
 
 //const database = require('database')
@@ -60,7 +60,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
-app.use('/liked', likedRoutes);
+// app.use('/liked', likedRoutes);
 
 // User Router
 const userRouter = express.Router();
@@ -75,7 +75,7 @@ app.use("/liked", favorites);
 // admin view
 const adminView = express.Router();
 adminPage(adminView, db);
-app.use("/users", adminView);
+app.use("/admin", adminView);
 
 app.use('/api/cards', cardsRoutes);
 
@@ -85,7 +85,6 @@ app.use('/api/cards', cardsRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-const thing = "helloworld"
 
 // app.get('/', (req, res) => {
 //   const testVar = {test: thing}
@@ -106,12 +105,12 @@ app.get('/', (req, res) => {
   // .catch(e => {
   //   console.error(e);
   //   res.send(e)
-  // });
+});
 });
 
-app.get("/liked", (req, res) => {
-  res.render('liked');
-});
+// app.get("/liked", (req, res) => {
+//   res.render('liked');
+// });
 
 app.get('/adminPage', (req, res) => {
   db.getAllCards(req.query, 20)

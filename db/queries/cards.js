@@ -1,12 +1,13 @@
 const db = require('../connection');
 
-const getAllCards =  () => {
+const getAllCards =  (min_price, max_price) => {
   const queryString = `
     SELECT cards.*
     FROM cards
+    WHERE cost < $1 AND cost > $2
     `;
     return db
-    .query(queryString)
+    .query(queryString, [max_price, min_price])
     .then((res) => res.rows)
     .catch((err) => console.error("query error", err.stack));
 }
