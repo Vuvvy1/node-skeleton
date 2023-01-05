@@ -1,3 +1,14 @@
 -- Users table seeds here (Example)
-INSERT INTO users (name, email, password) VALUES ('Alice', 'test@test.com', '123');
-INSERT INTO users (name, email, password) VALUES ('Kira', 'second@query.com', '321');
+INSERT INTO roles
+  (id, name)
+VALUES
+  (1, 'customer'),
+  (2, 'admin');
+
+
+INSERT INTO users
+  (name, password, role_id)
+VALUES
+  ('Vuvvy', 'password', 2),
+  ('poop', 'password', 1);
+

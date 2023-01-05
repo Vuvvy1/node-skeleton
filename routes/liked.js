@@ -5,7 +5,6 @@ const db = require('../db/connection');
 
 
 
-
 router.get('/', (req, res) => {
   console.log("getAllLikedCards");
   const user_id = 1 //bc no cookies
@@ -19,6 +18,10 @@ router.get('/', (req, res) => {
     console.error(e);
     res.send(e)
   });
+
+// router.get("/liked", (req, res) => {
+//   res.render('liked');
+
 });
 
 // post favourites route

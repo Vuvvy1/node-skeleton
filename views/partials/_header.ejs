@@ -6,9 +6,11 @@
 
     <div class="liked">
       <a href="/liked">My favorites </a>
-      <form method="GET" action="/login/id">
 
-          <button type="submit" class="btn btn-primary" style="margin-right:1em">Log In</button>
+        <form action="/users/login" method="POST" >
+          <input type="text" placeholder="ID" class="login-input" name="user_id">
+          <button type="submit" class="login-button">Login</button>
+        </form>
     </div>
 
 

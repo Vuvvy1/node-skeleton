@@ -5,10 +5,15 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require('cookie-session');
+// const methodOverride = require('method-override');
+// const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+// ENCRYPTION
+// const bcrypt = require('bcryptjs');
 
 app.set('view engine', 'ejs');
 // hello
@@ -27,12 +32,16 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['process.env.KEY']
+}));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
+const userRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
@@ -44,10 +53,16 @@ const db = require('./database');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
+// app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/liked', likedRoutes);
+
+// User Router
+const userRouter = express.Router();
+userRoutes(userRouter, db);
+app.use("/users", userRouter);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -73,6 +88,11 @@ app.get('/', (req, res) => {
     res.send(e)
   });
 });
+
+app.get("/login", (req, res) => {
+  res.render('login');
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
