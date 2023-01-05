@@ -1,14 +1,13 @@
 const express = require('express');
 const router  = express.Router();
-const baddb = require('../database'); //refactor to use db folder
 const db = require('../db/connection');
+const cardsQueries = require('../db/queries/cards')
 
-module.exports = function(router, db) {
 
 router.get('/', (req, res) => {
   console.log("getAllLikedCards");
   const user_id = 1 //bc no cookies
-  baddb.getAllLikedCards(user_id)
+  cardsQueries.getAllLikedCards(user_id)
   .then(cards => {
     console.log("cards" , cards)
     const tempateVar = {cards: cards, userID: true}
@@ -26,6 +25,8 @@ router.get('/', (req, res) => {
 });
 
 // post favourites route
+//move this to a seperate
+
 
 router.post("/", (req,res) =>{
   console.log(req.body)
@@ -38,7 +39,6 @@ router.post("/", (req,res) =>{
 })
 
 
-}
 module.exports = router;
 
 // need to join tables to see both favourites as well as the cards joined

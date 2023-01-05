@@ -16,7 +16,7 @@ const app = express();
 // const bcrypt = require('bcryptjs');
 
 app.set('view engine', 'ejs');
-// hello
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -45,7 +45,8 @@ const userRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
-const db = require('./database');
+const cardsQueries = require('./db/queries/cards');
+const db = require('./db/connection')
 // const database = require('database')
 
 // Mount all resource routes
@@ -77,7 +78,7 @@ const thing = "helloworld"
 // });
 app.get('/', (req, res) => {
   console.log("getAllCards");
-  db.getAllCards(req.query, 20)
+  cardsQueries.getAllCards(req.query, 20)
   .then(cards => {
     const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
