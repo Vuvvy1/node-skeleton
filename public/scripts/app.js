@@ -6,7 +6,7 @@
 $(".card-like-icon").click(function(event){
   //alert("monkeyfuzz");
   event.preventDefault();
-  console.log(event.target.id)
+  console.log("===",event.target.id)
   const $icon = $(this)
   const dataId = $(this).attr("data-id")
   $.ajax({

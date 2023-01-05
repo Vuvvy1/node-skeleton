@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   baddb.getAllLikedCards(user_id)
   .then(cards => {
     console.log("cards" , cards)
-    const tempateVar = {cards: cards}
+    const tempateVar = {cards: cards, userID: true}
     res.render('liked', tempateVar); //not a path its a template
     // res.send({cards})
   })
@@ -37,6 +37,8 @@ router.post("/", (req,res) =>{
   })
 })
 
+
+}
 module.exports = router;
 
 // need to join tables to see both favourites as well as the cards joined
