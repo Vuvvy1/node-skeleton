@@ -34,12 +34,13 @@
           <div class="card-body">
             <h2 class="card-title"><%= cards[i].title %></h2>
             <img src="<%- cards[i].thumbnail_photo_url %>"/>
-            <div ><%- cards[i].cost %></div>
+            <div ><%- cards[i].cost %>
               <% if (cards[i].active === false) { %>
-                <h3>Sold Out</h3>
+                <a>Sold Out</a>
               <% } %>
               <a href="/liked" > <i class="fa-regular fa-heart"></i>
               </a>
+              <button type="submit" class="login-button">Add to cart</button>
           </div>
         </td>
       <% } %>
