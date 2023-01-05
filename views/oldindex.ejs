@@ -24,6 +24,29 @@
 
 <body>
   <%- include('partials/_header') %>
+  <!-- <table>
+    <tbody>
+      <% for(var i = 0; i < cards.length; i++) { %>
+        <% if (i % 5 === 0 && i !== 0) {  %>
+          <tr></tr>
+        <% } %>
+        <td>
+          <div class="card-body">
+            <h2 class="card-title"><%= cards[i].title %></h2>
+            <img src="<%- cards[i].thumbnail_photo_url %>"/>
+            <div ><%- cards[i].cost %>
+              <% if (cards[i].active === false) { %>
+                <a>Sold Out</a>
+              <% } %>
+              <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
+
+              </a>
+              <button type="submit" class="login-button">Add to cart</button>
+          </div>
+        </td>
+      <% } %>
+    </tbody>
+  </table> -->
     <h1 class="page-title">Pokemon Traders</h1>
   </nav>
     <body>
