@@ -13,6 +13,17 @@ module.exports = {
       .query(queryString)
       .then((res) => res.rows)
       .catch((err) => console.error("query error", err.stack));
+}, getAllLikedCards: (user_id) => {
+  const queryString = `
+    SELECT distinct *
+    FROM favourite_items
+    JOIN cards on cards.id = cards_id
+    WHERE users_id = $1
+    `;
+    return pool
+    .query(queryString, [user_id])
+    .then((res) => res.rows)
+    .catch((err) => console.error("query error", err.stack));
 },
 getUserWithId: (id) => {
   return pool
@@ -24,7 +35,8 @@ getUserWithId: (id) => {
       console.log('Error:', err.stack);
     });
 },
-
+}
 // exports.frontPageCards = frontPageCards;
-  }
 
+
+//join tabels with cards

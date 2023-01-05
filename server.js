@@ -43,8 +43,8 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
-const db = require('./database');
 const likedRoutes = require('./routes/liked');
+const db = require('./database');
 const adminPage = require('./routes/admin');
 
 //const database = require('database')
@@ -56,7 +56,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
-
+app.use('/liked', likedRoutes);
 
 // User Router
 const userRouter = express.Router();
