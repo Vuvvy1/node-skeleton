@@ -26,7 +26,6 @@ router.get('/', (req, res) => {
 
 // post favourites route
 
-
 router.post("/", (req,res) =>{
   console.log(req.body)
   const cards_id = req.body.card_id

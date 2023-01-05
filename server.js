@@ -42,12 +42,16 @@ app.use(cookieSession({
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const userRoutes = require('./routes/users');
-const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
 const cardsQueries = require('./db/queries/cards');
 const db = require('./db/connection')
 // const database = require('database')
+const cardsRoutes = require('./routes/cards');
+const db = require('./database');
+const adminPage = require('./routes/admin');
+
+//const database = require('database')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -56,13 +60,24 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
-app.use('/register', registerRoutes);
 app.use('/liked', likedRoutes);
 
 // User Router
 const userRouter = express.Router();
 userRoutes(userRouter, db);
 app.use("/users", userRouter);
+
+// User favorites
+const favorites = express.Router();
+likedRoutes(favorites, db);
+app.use("/liked", favorites);
+
+// admin view
+const adminView = express.Router();
+adminPage(adminView, db);
+app.use("/users", adminView);
+
+app.use('/api/cards', cardsRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
@@ -82,13 +97,33 @@ app.get('/', (req, res) => {
   .then(cards => {
     const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
+  // console.log("getAllCards");
+  // db.getAllCards(req.query, 20)
+  // .then(cards => {
+  //   const tempateVar = {cards: cards}
     // res.send({cards})
-  })
-  .catch(e => {
-    console.error(e);
-    res.send(e)
-  });
+  // })
+  // .catch(e => {
+  //   console.error(e);
+  //   res.send(e)
+  // });
 });
+
+app.get("/liked", (req, res) => {
+  res.render('liked');
+});
+
+app.get('/adminPage', (req, res) => {
+  db.getAllCards(req.query, 20)
+  .then(cards => {
+    const tempateVar = {
+      cards: cards,
+      userID: req.session.user_id
+    };
+      res.render('adminPage', tempateVar);
+    });
+  });
+
 
 app.get("/login", (req, res) => {
   res.render('login');
