@@ -35,6 +35,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
+const cardsRoutes = require('./routes/cards');
 const db = require('./database');
 //const database = require('database')
 
@@ -46,6 +47,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
+app.use('/api/cards', cardsRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -59,17 +62,17 @@ const thing = "helloworld"
 //   res.render('index', testVar);
 // });
 app.get('/', (req, res) => {
-  console.log("getAllCards");
-  db.getAllCards(req.query, 20)
-  .then(cards => {
-    const tempateVar = {cards: cards}
-    res.render('index', tempateVar);
+  // console.log("getAllCards");
+  // db.getAllCards(req.query, 20)
+  // .then(cards => {
+  //   const tempateVar = {cards: cards}
+    res.render('index');
     // res.send({cards})
-  })
-  .catch(e => {
-    console.error(e);
-    res.send(e)
-  });
+  // })
+  // .catch(e => {
+  //   console.error(e);
+  //   res.send(e)
+  // });
 });
 
 app.listen(PORT, () => {
