@@ -37,6 +37,6 @@ getUserWithId: (id) => {
 },
 
 // exports.frontPageCards = frontPageCards;
-  }
+  
 
 //join tabels with cards
