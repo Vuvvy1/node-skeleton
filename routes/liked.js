@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
 });
 
 // post favourites route
-//move this to a seperate
 
 
 router.post("/", (req,res) =>{
@@ -40,11 +39,4 @@ router.post("/", (req,res) =>{
 
 
 module.exports = router;
-
-// need to join tables to see both favourites as well as the cards joined
-// change the way we are rendering each items (liked.ejs)
-//we can only like the same element once
-//const users_id = 1 : implemet cookie session package, change hard coded to the req.session.user_id property.
-
-//
 
