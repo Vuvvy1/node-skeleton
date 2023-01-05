@@ -1,6 +1,8 @@
 
 let min_price = 0;
 let max_price = 100;
+const cardsPerRow = 6
+const x = cardsPerRow
 
 $(document).ready(function () {
   showAllItems(); //Display all items with no filter applied
@@ -33,8 +35,9 @@ function showAllItems() {
 
     // Bucketing cards into rows
     const cardRows = []
+
     for (let i = 0; i < data.cards.length; i++) { // i = 1
-      cardRows[i] = data.cards.slice(i * 5, i * 5 + 5) // 5, 10
+      cardRows[i] = data.cards.slice(i * x, i * x + x) // 5, 10
     }
 
     for (const cardRow of cardRows) {
@@ -45,11 +48,11 @@ function showAllItems() {
         rowHtml += `
           <div class="card-body">
             <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
-            <img src="${cardInRow.thumbnail_photo_url}"/>
+            <img class="card-picture" "submit()" src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
             <div >
               <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
               </a>
-              $${cardInRow.cost}.00
+              <a style='color: green;'> $${cardInRow.cost}.00 </a>
               <button type="submit" class="login-button">Add to cart</button>
             </div>
           </div>
@@ -86,11 +89,8 @@ function showAllFiltered() {
 
     // Bucketing cards into rows
     const cardRows = []
-    const cardsPerRow = 4
-    const x = cardsPerRow
     for (let i = 0; i < data.cards.length; i++) { // i = 1
       cardRows[i] = data.cards.slice(i * x, i * x + x) // 5, 10
-
     }
 
     for (const cardRow of cardRows) {
@@ -99,14 +99,16 @@ function showAllFiltered() {
 
       for (const cardInRow of cardRow) {
         rowHtml += `
-          <div class="card-body">
-            <h2 class="card-title">${cardInRow.title}</h2>
-            <img src="${cardInRow.thumbnail_photo_url}"/>
-            <div >$${cardInRow.cost}.00</div>
-              ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
-              <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
-              </a>
+        <div class="card-body">
+          <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
+          <img src="${cardInRow.thumbnail_photo_url}"/>
+          <div >
+            <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
+            </a>
+            $${cardInRow.cost}.00
+            <button type="submit" class="login-button">Add to cart</button>
           </div>
+        </div>
         `
       }
       rowHtml += `</div>`

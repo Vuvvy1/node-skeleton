@@ -4,8 +4,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
-  background: rgb(163, 208, 219);
+  background-color: rgb(102, 154, 167);
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
   // background: linear-gradient(
   //   227deg,
   //   rgba(163, 208, 219, 1) 0%,
@@ -22,6 +22,7 @@ body {
   display: flex;
   height: 120px;
   background-color: red;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
   font-family: "Bungee", cursive;
   color: white;
   padding-left: 2em;
@@ -34,7 +35,7 @@ body {
   width: 100%;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 120%;
-
+  border-bottom:3px solid rgb(56, 56, 56);
 
 }
 
@@ -60,6 +61,23 @@ header {
   }
 }
 
+
+.card-picture {
+  transition: all .2s ease-in-out;
+  max-width: 15em;
+}
+.card-picture:hover {
+  transform: scale(1.1);
+
+}
+
+.card-picture:focus{
+  transform: scale(2.2);
+  position: fixed;
+  top: 30%;
+  left: 40%;
+}
+
 .img-row {
   .img-container {
     i {
@@ -78,6 +96,7 @@ header {
 
       &:hover {
         background: -webkit-linear-gradient(top, #fff, #ccc) #ddd;
+        background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
       }
     }
   }
@@ -87,9 +106,30 @@ button
 {
   width: 80px;
   justify-content: center;
-  background-color: transparent;
+}
+
+button:hover
+{
+  width: 80px;
+  justify-content: center;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
+  transform: scale(1.1) perspective(1px);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-y: center;
 
 }
+
+button:active{
+  background:olive;
+}
+button:focus{
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
+}
+
 
 .fa-heart:hover {
   color: red
