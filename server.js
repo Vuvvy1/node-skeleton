@@ -96,14 +96,14 @@ app.get('/', (req, res) => {
   console.log("getAllCards");
   console.log("req.session.user_id ➤", req.session.user_id);
   if(!req.session.user_id){req.session.user_id = 'Guest'} // ducttape fix
-    // const tempateVar = {
-    //   userID: req.session.user_id
-    // };
+    const tempateVar = {
+      userID: req.session.user_id
+    };
   cardsQueries.getAllCards(req.query, 20)
-  .then(cards => {
-    const tempateVar = {cards: cards, userID: true}
+  // .then(cards => {
+  //   // const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
-});
+// });
 });
 
 // app.get("/liked", (req, res) => {
