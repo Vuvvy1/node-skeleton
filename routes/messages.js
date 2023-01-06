@@ -4,7 +4,7 @@ const userQueries = require('../db/queries/users');
 
 
 
-router.get("/messages", (req, res) => {
+router.get("/", (req, res) => {
   res.render('messages');
 });
 
