@@ -16,7 +16,7 @@ const app = express();
 // const bcrypt = require('bcryptjs');
 
 app.set('view engine', 'ejs');
-// hello
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -44,6 +44,9 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
+const cardsQueries = require('./db/queries/cards');
+// const db = require('./db/connection')
+// const database = require('database')
 const cardsRoutes = require('./routes/cards');
 
 const db = require('./database');
@@ -58,7 +61,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
-app.use('/liked', likedRoutes);
+// app.use('/liked', likedRoutes);
 
 // User Router
 const userRouter = express.Router();
@@ -73,7 +76,7 @@ app.use("/liked", favorites);
 // admin view
 const adminView = express.Router();
 adminPage(adminView, db);
-app.use("/users", adminView);
+app.use("/admin", adminView);
 
 app.use('/api/cards', cardsRoutes);
 
@@ -84,6 +87,7 @@ app.use('/api/cards', cardsRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
 // app.get('/', (req, res) => {
 //   const testVar = {test: thing}
 //   res.render('index', testVar);
@@ -92,25 +96,19 @@ app.get('/', (req, res) => {
   console.log("getAllCards");
   console.log("req.session.user_id ➤", req.session.user_id);
   if(!req.session.user_id){req.session.user_id = 'Guest'} // ducttape fix
-    const tempateVar = {
-      userID: req.session.user_id
-    };
+    // const tempateVar = {
+    //   userID: req.session.user_id
+    // };
+  cardsQueries.getAllCards(req.query, 20)
+  .then(cards => {
+    const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
-  // console.log("getAllCards");
-  // db.getAllCards(req.query, 20)
-  // .then(cards => {
-  //   const tempateVar = {cards: cards}
-    // res.send({cards})
-  // })
-  // .catch(e => {
-  //   console.error(e);
-  //   res.send(e)
-  // });
+});
 });
 
-app.get("/liked", (req, res) => {
-  res.render('liked');
-});
+// app.get("/liked", (req, res) => {
+//   res.render('liked');
+// });
 
 app.get('/adminPage', (req, res) => {
   db.getAllCards(req.query, 20)
