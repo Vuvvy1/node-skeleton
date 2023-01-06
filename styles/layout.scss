@@ -28,6 +28,10 @@ span {
     }
 }
 
+#no-stock {
+  filter: grayscale(90%);
+  z-index: 1;
+}
 .card{
   width: 80px;
 
@@ -47,3 +51,4 @@ span {
   display: flex;
   gap: 16px;
 }
+

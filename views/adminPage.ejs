@@ -18,70 +18,60 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/filter.js"></script>
+  <script defer type="text/javascript" src="/scripts/filter.js"></script>
 
 </head>
 
 <body>
   <%- include('partials/_header') %>
-  <table>
-    <tbody>
-      <% for(var i = 0; i < cards.length; i++) { %>
-        <% if (i % 5 === 0 && i !== 0) {  %>
-          <tr></tr>
-        <% } %>
-        <td>
-          <div class="card-body">
-            <h2 class="card-title"><%= cards[i].title %></h2>
-            <img src="<%- cards[i].thumbnail_photo_url %>"/>
-            <div ><%- cards[i].cost %>
-              <% if (cards[i].active === false) { %>
-                <button type="submit" class="in-stock">mark as IN STOCK</button>
-                <a>Sold Out</a>
-              <% } else {%>
-              <button type="submit" class="sold-out" border-color="blue">mark as SOLD OUT</button>
-              <% } %>
-          </div>
-        </td>
-      <% } %>
-    </tbody>
-  </table>
     <h1 class="page-title">Pokemon Traders</h1>
   </nav>
     <body>
       <div class="horizontal">
       <div class="container-filter">
         <div class="row">
-          <div class=" col-12 col-md-2">
+
             <div class="card px-2">
               <h2 class="text-center">Filter by</h2>
               <hr>
               <h4>Price:</h4>
               <div class="card-body">
                 <form id="price-range-form">
+                  <div>
                   <label for="min-price" class="form-label">Min price: </label>
                   <span id="min-price-txt">$0</span>
                   <input type="range" class="form-range" min="0" max="99" id="min-price" step="1" value="0">
                   <label for="max-price" class="form-label">Max price: </label>
                   <span id="max-price-txt">$100</span>
                   <input type="range" class="form-range" min="1" max="100" id="max-price" step="1" value="100">
+                </div>
                 </form>
+                <button class="filter-button">Enter</button>
               </div>
-            </div>
+              <form action="/users/login" method="POST" >
+                <input type="text" placeholder="Title" class="add-card-input" name="title">
+                <input type="text" placeholder="img link" class="add-card-input" name="thumbnail_photo_url">
+                <input type="text" placeholder="cost in dolars" class="add-card-input" name="cost">
+                <button class="add-card-button">Add card</button>
+              </form>
           </div>
-          <div class="col-12 col-md-10">
+          <div id='cards-container'>
+
+          </div>
+          <!-- <div class="col-12 col-md-10">
             <div class="card">
               <div class="card-body">
-                <div class="row" id="display-items-div">
+                <div class="row" id="cards-container">
 
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
     </div>
+
     </body>
 
 

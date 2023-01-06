@@ -2,6 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const userQueries = require('../db/queries/users');
 const db = require('../database');
+const dbQuery = require('../db/connection');
+
 
 //req.query,
 router.get("/", (req, res) => {
@@ -19,5 +21,13 @@ router.get("/", (req, res) => {
     res.send(e)
   });
 });
+
+router.delete('/:id', (req, res) => {
+  const cards_id = req.params.id
+  dbQuery.query(`DELETE FROM cards where id = $1;`, [cards_id])
+  res.send({
+    message: "card deleted"
+  })
+})
 
 module.exports = router;
