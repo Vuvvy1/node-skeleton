@@ -196,7 +196,6 @@ function showAllFiltered() {
               ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
               <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
               </a>
-          </div>
         </div>
         `
       }
