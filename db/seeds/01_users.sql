@@ -11,5 +11,5 @@ INSERT INTO users
 VALUES
   ('Guest', 'password', 1),
   ('Vuvvy', 'password', 2),
-  ('poop', 'password', 1);
+  ('bob', 'password', 1);
 

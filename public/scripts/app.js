@@ -39,8 +39,9 @@
 // }
 // });
 
+const addLikeEventListener = () => {
 
-$("#cards-container").click(".card-like-icon", function (event) {
+$("#cards-container .card-like-icon").click( function (event) {
   event.preventDefault();
   const dataId = $(event.target).attr("data-id");
   if (!$(event.target).hasClass("liked")) {
@@ -60,5 +61,8 @@ $("#cards-container").click(".card-like-icon", function (event) {
     // $(event.target).css("color", "purple");
   }
 });
+
+}
+
 
 

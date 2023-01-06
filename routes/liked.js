@@ -19,10 +19,6 @@ router.get('/', (req, res) => {
     console.error(e);
     res.send(e)
   });
-
-// router.get("/liked", (req, res) => {
-//   res.render('liked');
-
 });
 
 // post favourites route
@@ -36,6 +32,7 @@ router.post("/", (req,res) =>{
     message: "card liked"
   })
 })
+return router
 }
 
 // module.exports = router;

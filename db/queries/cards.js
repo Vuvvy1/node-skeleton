@@ -37,4 +37,31 @@ return db
   });
 }
 
-module.exports = {getAllCards,getAllLikedCards,getUserWithId}
+const getSingleCard = (id) => {
+  return db
+    .query(`SELECT * FROM cards WHERE id = $1;`, [id])
+    .then(res => {
+      return res.rows[0] || null;
+    })
+    .catch(err => {
+      console.log('Error:', err.stack);
+    });
+  }
+
+  const getMessages = (id) => {
+    return db
+      .query(`SELECT message.id, users.name as user_name, created_at, users_id, message
+      FROM message
+      JOIN users on users_id = users.id
+      WHERE cards_id = $1  ;`, [id])
+      .then(res => {
+        return res.rows;
+      })
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+    }
+
+
+
+module.exports = {getAllCards,getAllLikedCards,getUserWithId, getSingleCard , getMessages}

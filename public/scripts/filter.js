@@ -151,7 +151,9 @@ function showAllItems() {
 
         // Append the row to the cardsContainer
         $(rowHtml).appendTo(cardsContainer)
+
       }
+      addLikeEventListener()
     })
   }
 
