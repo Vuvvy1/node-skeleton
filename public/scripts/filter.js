@@ -115,7 +115,7 @@ function showAllItems() {
                  `${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>':
                   '<box style="color: red;">Sold Out</box>'}`}
 
-              ${ (data[0].role_id === 2) ?'<button value = ${cardInRow.id} class="delete-button">Delete</button>':``}
+              ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:``}
 
             </div>
           </div>
