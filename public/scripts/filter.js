@@ -28,24 +28,30 @@ $(document).ready(function () {
 
 });
 
-$("#add-card").click(function(){
-  $.post("/api/cards/add",{"title": $('#title').val(),"thumbnail_photo_url": $('#thumbnail_photo_url').val(),"cost": $('#cost').val(),"active": $('#active').val()}, function(data, status){
-    location.reload()
-  });
-});
-
-$(document).on("click", ".delete-button", function () {
-  console.log("test ➤");
-  deleteCards()
+$(document).on("click", ".delete-button", function (event) {
+  deleteCards($(event.target).val())
   })
 
-function deleteCards () {
+function deleteCards (id) {
   console.log('delete pls')
-  const card_id = $(".delete-button").val()
-  console.log("card_id ➤", card_id);
   $.ajax({
-    url: `/api/cards/${card_id}`,
+    url: `/api/cards/${id}`,
     type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+    }
+});
+}
+
+$(document).on("click", ".mark-as-out-stock-button", function (event) {
+  console.log('hello')
+  editCards($(event.target).val())
+  })
+
+function editCards (id) {
+  $.ajax({
+    url: `/api/cards/${id}`,
+    type: 'POST',
     success: function(result) {
         // Do something with the result
     }
@@ -112,8 +118,8 @@ function showAllItems() {
             <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${ (data[0].role_id === 2) ?
-                `${cardInRow.active ?'<button class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
-                 '<button  class="Mark-as-out-stock-button" >Mark as in stock</button>'}`:
+                `${cardInRow.active ?`<button value = ${cardInRow.id} class="mark-as-out-stock-button">Mark as out of stock</button>`:
+                 '<button  class="mark-as-in-stock-button" >Mark as in stock</button>'}`:
 
                  `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':
                   '<box style="color: red;">Sold Out</box>'}`}

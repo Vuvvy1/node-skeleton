@@ -38,5 +38,16 @@ router.post("/add", (req, res) => {
 
 });
 
+router.post('/:id', (req, res) => {
+  const cards_id = req.params.id
+  dbQuery.query(`
+  UPDATE cards
+  SET active = false
+  WHERE id = $1;`, [cards_id])
+  res.send({
+    message: "card edited"
+  })
+})
+
 module.exports = router;
 
