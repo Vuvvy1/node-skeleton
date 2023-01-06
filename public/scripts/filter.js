@@ -4,7 +4,9 @@ let max_price = 100;
 const cardsPerRow = 6
 const x = cardsPerRow
 
+
 $(document).ready(function () {
+
   showAllItems(); //Display all items with no filter applied
   $(document).on('input', '#min-price', function() {
     min_price = parseInt($("#min-price").val());
@@ -23,9 +25,24 @@ $(document).ready(function () {
     console.log(event)
     showAllFiltered()
   })
+
 });
 
+$(document).on("click", ".delete-button", function () {
+  console.log("test ➤");
+  deleteCards()
+  })
 
+function deleteCards () {
+  const card_id = $(".delete-button").val()
+  $.ajax({
+    url: `/api/cards/${card_id}`,
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+    }
+});
+}
 
 function getCurrentUser() {
  return new Promise((resolve, reject) => {
@@ -92,7 +109,7 @@ function showAllItems() {
                  `${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>':
                   '<box style="color: red;">Sold Out</box>'}`}
 
-              ${ (data[0].role_id === 2) ?'<button type="submit" class="buy-button">Delete</button>':``}
+              ${ (data[0].role_id === 2) ?'<button value = ${cardInRow.id} class="delete-button">Delete</button>':``}
 
             </div>
           </div>

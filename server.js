@@ -45,6 +45,7 @@ const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
 const cardsRoutes = require('./routes/cards');
+
 const db = require('./database');
 const adminPage = require('./routes/admin');
 
@@ -75,6 +76,7 @@ adminPage(adminView, db);
 app.use("/users", adminView);
 
 app.use('/api/cards', cardsRoutes);
+
 
 // Note: mount other resources here, using the same pattern above
 
