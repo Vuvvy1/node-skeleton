@@ -145,9 +145,38 @@ a{
   margin-left: 1em;
   scale: 1.2;
   min-width: 2em;
+  margin-left: 0.5em;
 }
 .fa-comments
 {
   scale: 1.2;
   min-width: 2em;
+  margin-left: -0.3em;
 }
+.fav {
+
+  color: white
+
+}
+.msg{
+  color: white;
+  margin-left: 3em;
+}
+.buy-button
+{
+  margin-top: 1em;
+  margin-left: -0.4em;
+}
+.Sold-Out
+{
+  scale: 1.5;
+  margin-top: 1.5em;
+  margin-left: 0.5em;
+}
+.user-greeting{
+  margin-top: 1.5em;
+  margin-bottom: -0.10em;
+  color: #000;
+  font-size: 1.3em;
+}
+

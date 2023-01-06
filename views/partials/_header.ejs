@@ -5,8 +5,8 @@
 
 
     <div class="pages">
-      <a href="/liked">My favorites </a>
-        <a href="/messages">Messages </a>
+      <a class="fav" href="/liked">My favorites </a>
+        <a class="msg"href="/messages">Messages </a>
       <div>
         <% if (userID === 'Guest') { %>
           <form action="/users/login" method="POST" >
