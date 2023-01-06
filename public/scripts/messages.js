@@ -13,13 +13,10 @@ $("#cards-container").click(".chat-icon", function (event) {
       $(event.target).css("color", "red");
       $(event.target).addClass("liked");
     });
-  // } else {
-  //   $(event.target).removeClass("liked");
-    // $(event.target).css("color", "purple");
 
 });
 
-
+//test123
 
 //save message
 //get message

@@ -41,6 +41,7 @@ app.use(cookieSession({
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
+const messagesRoutes = require('./routes/messages')
 const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
@@ -61,6 +62,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
+app.use('/messages', messagesRoutes);
 // app.use('/liked', likedRoutes);
 
 // User Router
