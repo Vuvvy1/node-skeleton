@@ -39,13 +39,11 @@ router.post("/add", (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-  const cards_active = req.params.active
-  console.log('edit tester', cards_active)
-  console.log('hello')
+  const cards_id = req.params.id
   dbQuery.query(`
-  SELECT cards.*
-  FROM cards
-  WHERE status = $1 `, [cards_active])
+  UPDATE cards
+  SET active = false
+  WHERE id = $1;`, [cards_id])
   res.send({
     message: "card edited"
   })
