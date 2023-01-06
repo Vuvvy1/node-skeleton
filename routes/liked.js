@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   cardsQueries.getAllLikedCards(user_id)
   .then(cards => {
     console.log("cards" , cards)
-    const tempateVar = {cards: cards, userID: true}
+    const tempateVar = {cards: cards, userID: "true"}
     res.render('liked', tempateVar); //not a path its a template
     // res.send({cards})
   })
