@@ -19,9 +19,7 @@
 
 <body>
   <%- include('partials/_header') %>
-  <nav>
-    <span>Pokemon Traders</span>
-  </nav>
+  
   <table class="table">
     <thead>
 <h1>Messages</h1>
@@ -31,7 +29,7 @@
       <h3>Pokemon Card:  <%= card.title %></h3>
       <form class="form-inline" action="/messages/<%= card.id %>" method="POST">
         <div class="form-group mb-2">
-          <label for="email">Message:</label>
+          <label for="email">Type Here:</label>
           <textarea name="message" > </textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send</button>
