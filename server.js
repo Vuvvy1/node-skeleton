@@ -92,7 +92,7 @@ app.use('/api/cards', cardsRoutes);
 // });
 app.get('/', (req, res) => {
   console.log("getAllCards");
-  cardsQueries.getAllCards(req.query, 20)
+  cardsQueries.getAllCards(0, 100) //(req.query, 20)
   .then(cards => {
     const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
