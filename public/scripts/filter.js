@@ -2,7 +2,9 @@
 let min_price = 0;
 let max_price = 100;
 
+
 $(document).ready(function () {
+
   showAllItems(); //Display all items with no filter applied
   $(document).on('input', '#min-price', function() {
     min_price = parseInt($("#min-price").val());
@@ -21,9 +23,23 @@ $(document).ready(function () {
     console.log(event)
     showAllFiltered()
   })
+
 });
 
+$(document).on("click", ".delete-button", function () {
+  deleteCards()
+  })
 
+function deleteCards () {
+  const card_id = $(".delete-button").val()
+  $.ajax({
+    url: `/api/cards/${card_id}`,
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+    }
+});
+}
 
 
 function showAllItems() {
@@ -51,6 +67,8 @@ function showAllItems() {
               </a>
               $${cardInRow.cost}.00
               <button type="submit" class="login-button">Add to cart</button>
+              <button value = ${cardInRow.id} class="delete-button">Delete</button>
+
             </div>
           </div>
           `

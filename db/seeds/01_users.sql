@@ -7,8 +7,8 @@ VALUES
 
 
 INSERT INTO users
-  (name, password, role_id)
+  (name, password, admin, role_id)
 VALUES
-  ('Vuvvy', 'password', 2),
-  ('poop', 'password', 1);
+  ('Vuvvy', 'password', true, 2),
+  ('poop', 'password', false, 1);
 
