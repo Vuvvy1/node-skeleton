@@ -39,7 +39,7 @@ router.post("/login", (req, res) => {
       console.log(user.role_id);
       //if customer
       if (user.role_id === 1) {
-        return res.redirect('/liked');
+        return res.redirect('/');
       }
 
       //if admin goes to orders

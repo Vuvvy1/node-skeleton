@@ -85,8 +85,14 @@ function showAllItems() {
               <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
               </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
-              ${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>': '<box style="color: red;">Sold Out</box>'}
-              ${ (data[0].role_id = 2) ?'<button type="submit" class="buy-button">Delete</button>':``}
+              ${ (data[0].role_id === 2) ?
+                `${cardInRow.active ?'<button type="submit" class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
+                 '<button type="submit" class="Mark-as-out-stock-button" >Mark as in stock</button>'}`:
+
+                 `${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>':
+                  '<box style="color: red;">Sold Out</box>'}`}
+
+              ${ (data[0].role_id === 2) ?'<button type="submit" class="buy-button">Delete</button>':``}
 
             </div>
           </div>

@@ -30,7 +30,7 @@ router.get('/adminPage', (req, res) => {
 });
 
 router.post("/", (req,res) =>{
-  console.log(req.body)
+  console.log("req.body.user_id ➤", req.body);
   const cards_id = req.body.card_id
   const users_id = 1
   // db.query(`INSERT INTO favourite_items (cards_id, users_id) VALUES ($1, $2);`, [cards_id, users_id])
