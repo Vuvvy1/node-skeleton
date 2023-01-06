@@ -86,6 +86,20 @@ function getCards() {
  })
  };
 
+ function getFilteredCards() {
+  return new Promise((resolve, reject) => {
+    $.get(`/api/cards?min_price=${min_price}&max_price=${max_price}`)
+    .then((data) => {
+    console.log("user1 ➤", data);
+     resolve(data)
+  })
+ .catch((error) => {
+   reject(error)
+
+   })
+ })
+ };
+
 
 
 
@@ -113,19 +127,23 @@ function showAllItems() {
             <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
             <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
             <div >
+            <div class=boxed>
             <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
             </a>
             <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
+              </div>
+              <div class=boxed2>
+
               ${ (data[0].role_id === 2) ?
-                `${cardInRow.active ?`<button value = ${cardInRow.id} class="mark-as-out-stock-button">Mark as out of stock</button>`:
-                 '<button  class="mark-as-in-stock-button" >Mark as in stock</button>'}`:
+                `${cardInRow.active ?`<button value = ${cardInRow.id} class="mark-as-out-stock-button">Out of Stock</button>`:
+                 '<button  class="mark-as-in-stock-button" >New Batch</button>'}`:
 
                  `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':
                   '<box style="color: red;">Sold Out</box>'}`}
 
               ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:''}
-
+              </div>
             </div>
           </div>
           `
@@ -153,20 +171,19 @@ function showAllItems() {
   // </div>
 
 function showAllFiltered() {
-  console.log('hello')
-  console.log(min_price)
-  console.log(max_price)
-  const cardsContainer = $("#cards-container")
-  cardsContainer.empty()
-  $.get(`/api/cards?min_price=${min_price}&max_price=${max_price}`,
-  (data) => {
-
+  Promise.all([getCurrentUser(), getFilteredCards()])
+  .then(data => {
+    const cardsContainer = $("#cards-container")
+    console.log("data ➤", data);
     // Bucketing cards into rows
     const cardRows = []
-    for (let i = 0; i < data.cards.length; i++) { // i = 1
-      cardRows[i] = data.cards.slice(i * x, i * x + x) // 5, 10
+    console.log("data[0] ➤", data[0]);
+    console.log("data[1] ➤", data[1]);
+    for (let i = 0; i < data[1].cards.length; i++) { // i = 1
+      cardRows[i] = data[1].cards.slice(i * x, i * x + x) // 5, 10
     }
 
+    // Bucketing cards into rows
     for (const cardRow of cardRows) {
       // Generate HTML for that row
       let rowHtml = `<div class="card-row">`
@@ -174,22 +191,35 @@ function showAllFiltered() {
       for (const cardInRow of cardRow) {
         rowHtml += `
           <div class="card-body">
-            <h2 class="card-title">${cardInRow.title}</h2>
-            <img src="${cardInRow.thumbnail_photo_url}"/>
-            <div >$${cardInRow.cost}.00</div>
-              ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
-              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
-              </a>
-              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments"></i> </a>
-          </div>
-        </div>
-        `
-      }
-      rowHtml += `</div>`
+            <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
+            <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
+            <div >
+            <div class=boxed>
+            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
+            </a>
+            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
+              <a style='color: green;'> $${cardInRow.cost}.00 </a>
+              </div>
+              <div class=boxed2>
 
-      // Append the row to the cardsContainer
-      $(rowHtml).appendTo(cardsContainer)
-    }
+              ${ (data[0].role_id === 2) ?
+                `${cardInRow.active ?`<button value = ${cardInRow.id} class="mark-as-out-stock-button">Out of Stock</button>`:
+                 '<button  class="mark-as-in-stock-button" >New Batch</button>'}`:
+
+                 `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':
+                  '<box style="color: red;">Sold Out</box>'}`}
+
+              ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:''}
+              </div>
+            </div>
+          </div>
+          `
+        }
+        rowHtml += `</div>`
+
+        // Append the row to the cardsContainer
+        $(rowHtml).appendTo(cardsContainer)
+      }
   })
 }
 

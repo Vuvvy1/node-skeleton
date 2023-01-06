@@ -1,4 +1,6 @@
 // See: https://sass-lang.com/
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
 span {
   padding-right: 10px;
   padding-left: 10px;
@@ -73,4 +75,78 @@ span {
   padding-left: 50px;
 
 }
+.card-picture {
+  margin-bottom: 10px;
+}
+.card-title {
+  font-family: 'Pokemon Solid', sans-serif;
 
+}
+.card-body {
+  margin-bottom: 45px;
+
+}
+
+.boxed {
+  display: flex;
+  justify-content: space-between;
+}
+.boxed2 {
+  display: flex;
+  justify-content: center;
+  // flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  margin-left: 15px;
+  margin-top: 5px;
+
+}
+.buy-button{
+  margin-left: 40px;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  width: 90px;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.page-title {
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 70px;
+}
+a{
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 20px;
+
+}
+
+.navbar-brand {
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 40px;
+}
