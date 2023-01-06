@@ -45,10 +45,11 @@ const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
 const cardsQueries = require('./db/queries/cards');
-const db = require('./db/connection')
+// const db = require('./db/connection')
 // const database = require('database')
 const cardsRoutes = require('./routes/cards');
-//const db = require('./database');
+
+const db = require('./database');
 const adminPage = require('./routes/admin');
 
 //const database = require('database')
@@ -79,6 +80,7 @@ app.use("/admin", adminView);
 
 app.use('/api/cards', cardsRoutes);
 
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -92,20 +94,16 @@ app.use('/api/cards', cardsRoutes);
 // });
 app.get('/', (req, res) => {
   console.log("getAllCards");
-  cardsQueries.getAllCards(0, 100) //(req.query, 20)
-  .then(cards => {
-    const tempateVar = {cards: cards, userID: true}
-    res.render('index', tempateVar);
-  // console.log("getAllCards");
-  // db.getAllCards(req.query, 20)
+  console.log("req.session.user_id ➤", req.session.user_id);
+  if(!req.session.user_id){req.session.user_id = 'Guest'} // ducttape fix
+    const tempateVar = {
+      userID: req.session.user_id
+    };
+  cardsQueries.getAllCards(req.query, 20)
   // .then(cards => {
-  //   const tempateVar = {cards: cards}
-    // res.send({cards})
-  // })
-  // .catch(e => {
-  //   console.error(e);
-  //   res.send(e)
-});
+  //   // const tempateVar = {cards: cards, userID: true}
+    res.render('index', tempateVar);
+// });
 });
 
 // app.get("/liked", (req, res) => {
