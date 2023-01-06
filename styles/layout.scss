@@ -2,7 +2,7 @@
 span {
   padding-right: 10px;
   padding-left: 10px;
-  text-align: center;
+
 }
 .container {
   max-width: 1080px;
@@ -11,6 +11,7 @@ span {
   margin-bottom: 100px;
   padding-left: 10px;
 }
+
 .img-row {
   display: flex;
   width: 1080px;
@@ -43,7 +44,7 @@ span {
 }
 
 .addcard{
-    margin-left: auto;
+
     opacity: 50;
     margin-top: 50px;
 }
@@ -58,6 +59,9 @@ span {
   margin-right: 100px;
 }
 
+#delete-button{
+  float: right;
+}
 .card-row {
 
   display: flex;
@@ -74,8 +78,21 @@ span {
 
 }
 
-.bottom-button {
-  justify-content: flex-end;
+#allbox {
   display: flex;
+  justify-content: space-between;
+
+}
+.buy {
+float: right;
+
+
+}
+.bottoms{
+  transform: scale(1.2);
+  text-shadow: 1px 1px 0 #000;
+  
+}
+.fa-regular{
 
 }

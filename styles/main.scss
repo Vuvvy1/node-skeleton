@@ -60,7 +60,12 @@ header {
 
   }
 }
-
+.card-body{
+  max-width: 15em;
+}
+.mark-as-out-stock-button{
+  float: right;
+}
 
 .card-picture {
   transition: all .2s ease-in-out;

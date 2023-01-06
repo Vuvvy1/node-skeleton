@@ -22,6 +22,20 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get('/currentUser', (req, res) => {
+  if(req.session.user_id){
+    console.log("req.session.user_id ➤", req.session.user_id)
+    db.getUserWithId(req.session.user_id)
+    .then(user => {
+      res.json(user)
+    })
+  }else{
+    cardsQueries.getUserWithId('Guest')
+  .then(user => {
+    res.json(user)
+  })}
+});
+
 router.delete('/:id', (req, res) => {
   const cards_id = req.params.id
   dbQuery.query(`DELETE FROM cards where id = $1;`, [cards_id])

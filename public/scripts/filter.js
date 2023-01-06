@@ -112,21 +112,25 @@ function showAllItems() {
           <div class="card-body">
             <h2  class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
             <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
-            <div >
-            <a  href="" class="bottom"> <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
+            <div id="allbox">
+            <a style='color: green;'class="bottoms"> $${cardInRow.cost}.00 </a>
+            <div class="box">
+            <a  href="" class="bottoms"> <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"style="font-size: 1.73em;"></i>
             </a>
-            <a  href="" class="bottom"> <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
-              <a style='color: green;'class="bottom"> $${cardInRow.cost}.00 </a>
+            <a  href="" class="bottoms"> <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"style="font-size: 1.73em;"></i> </a>
+            </div>
+            <div>
+         ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:''}
+       </div>
+
+            </div>
+            <div class="buy">
               ${ (data[0].role_id === 2) ?
                 `${cardInRow.active ?`<button value = ${cardInRow.id} class="mark-as-out-stock-button">Mark as out of stock</button>`:
                  '<button  class="mark-as-in-stock-button" class="bottom">Mark as in stock</button>'}`:
-
                  `${cardInRow.active ? '<button  class="buy-button"class="bottom">Add to cart</button>':
-                  '<box style="color: red;"class="bottom">Sold Out</box>'}`}
-
-              ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:''}
-
-            </div>
+                 '<box style="color: red;"class="bottom">Sold Out</box>'}`}
+                 </div>
           </div>
           `
         }
