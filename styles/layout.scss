@@ -1,4 +1,6 @@
 // See: https://sass-lang.com/
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
 span {
   padding-right: 10px;
   padding-left: 10px;
@@ -34,7 +36,7 @@ span {
   z-index: 1;
 }
 .card{
-  width: 80px;
+  width: 8em;
   margin-right: 150px;
 
 
@@ -43,18 +45,8 @@ span {
   width: 200px;
 }
 
-.addcard{
 
-    opacity: 50;
-    margin-top: 50px;
-}
 
-.horizontal {
-  display: flex;
-  flex-direction: row;
-  margin-left: 10px;
-
-}
 .container-filter {
   margin-right: 100px;
 }
@@ -74,7 +66,18 @@ span {
 }
 #cards-container{
   border-left: 6px solid red;
-  padding-left: 50px;
+  padding-left: 4em;
+
+}
+.card-picture {
+  margin-bottom: 0em;
+}
+.card-title {
+  font-family: 'Pokemon Solid', sans-serif;
+
+}
+.card-body {
+  margin-bottom: 0em;
 
 }
 
@@ -85,14 +88,66 @@ span {
 }
 .buy {
 float: right;
-
-
 }
 .bottoms{
   transform: scale(1.2);
   text-shadow: 1px 1px 0 #000;
-  
-}
-.fa-regular{
 
+}
+.boxed{
+  margin-top: -1em;
+  height: 3em;
+  display: flex;
+  align-items: flex-start;
+}
+
+button {
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  line-height: 1.5;
+  padding: 0.5em 3em;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.page-title {
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 70px;
+}
+a{
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 20px;
+
+}
+
+.navbar-brand {
+  font-family: 'Pokemon Solid', sans-serif;
+  font-size: 40px;
+}
+.fa-heart{
+  margin-left: 1em;
+  scale: 1.2;
+  min-width: 2em;
+}
+.fa-comments
+{
+  scale: 1.2;
+  min-width: 2em;
 }
