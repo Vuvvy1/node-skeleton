@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../database');
 const cookieSession = require("cookie-session");
+const dbQuery = require('../db/connection');
 
 module.exports = function(router, db) {
 
@@ -87,6 +88,16 @@ router.post("/favourites", (req, res) => {
 });
 router.post("/logout", (req, res) => {
   //
+});
+
+router.post("/add", (req, res) => {
+
+
+  console.log("req.body ➤", req.body);
+  dbQuery.query(`INSERT INTO cards (title, thumbnail_photo_url, cost, active) VALUES ($1, $2, $3, $4);`, [req.body.title, req.body.thumbnail_photo_url, req.body.cost, req.body.active])
+  res.send({
+    message: "card added"
+  })
 });
 
 return router;

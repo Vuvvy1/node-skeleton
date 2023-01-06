@@ -48,11 +48,12 @@
                 </form>
                 <button class="filter-button">Enter</button>
               </div>
-              <form action="/users/login" method="POST" >
-                <input type="text" placeholder="Title" class="add-card-input" name="title">
-                <input type="text" placeholder="img link" class="add-card-input" name="thumbnail_photo_url">
-                <input type="text" placeholder="cost in dolars" class="add-card-input" name="cost">
-                <button class="add-card-button">Add card</button>
+              <form >
+                <input type="text" placeholder="Title" class="add-card-input" id="title">
+                <input type="text" placeholder="img link" class="add-card-input" id="thumbnail_photo_url">
+                <input type="number" placeholder="cost in dolars" class="add-card-input" id="cost">
+                <input type="text" placeholder="in stock" class="add-card-input" id="active">
+                <button class="add-card-button" id="add-card">Add card</button>
               </form>
           </div>
           <div id='cards-container'>
