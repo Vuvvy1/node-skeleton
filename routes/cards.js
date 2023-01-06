@@ -28,7 +28,15 @@ router.delete('/:id', (req, res) => {
   res.send({
     message: "card deleted"
   })
-})
+});
+
+router.post("/add", (req, res) => {
+
+
+  console.log("req.body ➤", req.body);
+  dbQuery.query(`INSERT INTO cards (title, thumbnail_photo_url, cost, active) VALUES ($1, $2, $3, $4);`, [req.body.title, req.body.thumbnail_photo_url, Number(req.body.cost), Boolean(req.body.active)]).then(() => {res.json({status:"secess"})})
+
+});
 
 router.post('/:id', (req, res) => {
   const cards_active = req.params.active
@@ -44,3 +52,4 @@ router.post('/:id', (req, res) => {
 })
 
 module.exports = router;
+

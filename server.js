@@ -122,6 +122,16 @@ app.get('/adminPage', (req, res) => {
     });
   });
 
+  app.post("/add", (req, res) => {
+
+
+    console.log("req.body ➤", req.body);
+    dbQuery.query(`INSERT INTO cards (title, thumbnail_photo_url, cost) VALUES ($1, $2, $3);`, [req.body.title, req.body.thumbnail_photo_url, req.body.cost])
+    res.send({
+      message: "card added"
+    })
+  });
+
 
 app.get("/login", (req, res) => {
   res.render('login');

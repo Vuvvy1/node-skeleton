@@ -28,6 +28,12 @@ $(document).ready(function () {
 
 });
 
+$("#add-card").click(function(){
+  $.post("/api/cards/add",{"title": $('#title').val(),"thumbnail_photo_url": $('#thumbnail_photo_url').val(),"cost": $('#cost').val(),"active": $('#active').val()}, function(data, status){
+    location.reload()
+  });
+});
+
 $(document).on("click", ".delete-button", function () {
   console.log("test ➤");
   deleteCards()
