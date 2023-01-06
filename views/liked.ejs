@@ -24,25 +24,7 @@
 
 <body>
   <%- include('partials/_header') %>
-  <table>
-    <tbody>
-      <% for(var i = 0; i < cards.length; i++) { %>
-        <% if (i % 5 === 0 && i !== 0) {  %>
-          <tr></tr>
-        <% } %>
-        <td>
-          <div class="card-body">
-            <h2 class="card-title"><%= cards[i].title %></h2>
-            <img src="<%- cards[i].thumbnail_photo_url %>"/>
-            <div ><%- cards[i].cost %></div>
-              <% if (cards[i].active === false) { %>
-                <h3>Sold Out</h3>
-              <% } %>
 
-          </div>
-        </td>
-      <% } %>
-    </tbody>
   </table>
     <h1 class="page-title">Pokemon Traders</h1>
   </nav>
@@ -84,5 +66,24 @@
 
 
 </body>
+<table>
+  <tbody>
+    <% for(var i = 0; i < cards.length; i++) { %>
+      <% if (i % 5 === 0 && i !== 0) {  %>
+        <tr></tr>
+      <% } %>
+      <td>
+        <div class="card-body">
+          <h2 class="card-title"><%= cards[i].title %></h2>
+          <img src="<%- cards[i].thumbnail_photo_url %>"/>
+          <div ><%- cards[i].cost %></div>
+            <% if (cards[i].active === false) { %>
+              <h3>Sold Out</h3>
+            <% } %>
+
+        </div>
+      </td>
+    <% } %>
+  </tbody>
 
 </html>
