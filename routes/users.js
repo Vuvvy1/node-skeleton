@@ -7,11 +7,12 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../database');
+const cardsQueries = require('../db/queries/cards');
 const cookieSession = require("cookie-session");
 const dbQuery = require('../db/connection');
+const db = require('../db/queries/cards');
 
-module.exports = function(router, db) {
+module.exports = function(router, cardsQueries) {
 
 router.get('/', (req, res) => {
   res.render('users');
@@ -61,7 +62,7 @@ router.get('/currentUser', (req, res) => {
       res.json(user)
     })
   }else{
-  db.getUserWithId('Guest')
+    cardsQueries.getUserWithId('Guest')
   .then(user => {
     res.json(user)
   })}

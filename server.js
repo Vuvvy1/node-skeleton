@@ -45,11 +45,11 @@ const userRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const likedRoutes = require('./routes/liked');
 const cardsQueries = require('./db/queries/cards');
-// const db = require('./db/connection')
+const db = require('./db/connection')
 // const database = require('database')
 const cardsRoutes = require('./routes/cards');
 
-const db = require('./database');
+//const db = require('./database');
 const adminPage = require('./routes/admin');
 
 //const database = require('database')
@@ -93,14 +93,34 @@ app.use("/admin", adminView);
 //   const testVar = {test: thing}
 //   res.render('index', testVar);
 // });
+
+
+// app.get('/', (req, res) => {
+//   console.log("getAllCards");
+//   cardsQueries.getAllCards(req.query, 20)
+//   .then(cards => {
+//     const tempateVar = {cards: cards, userID: true}
+//     res.render('index', tempateVar);
+//   // console.log("getAllCards");
+//   // db.getAllCards(req.query, 20)
+//   // .then(cards => {
+//   //   const tempateVar = {cards: cards}
+//     // res.send({cards})
+//   // })
+//   // .catch(e => {
+//   //   console.error(e);
+//   //   res.send(e)
+// });
+// });
+
 app.get('/', (req, res) => {
   console.log("getAllCards");
-  console.log("req.session.user_id ➤", req.session.user_id);
   if(!req.session.user_id){req.session.user_id = 'Guest'} // ducttape fix
     const tempateVar = {
       userID: req.session.user_id
     };
-  cardsQueries.getAllCards(req.query, 20)
+  // cardsQueries.getAllCards(req.query, 20)
+  cardsQueries.getAllCards(0, 20)
   // .then(cards => {
   //   // const tempateVar = {cards: cards, userID: true}
     res.render('index', tempateVar);
@@ -112,7 +132,7 @@ app.get('/', (req, res) => {
 // });
 
 app.get('/adminPage', (req, res) => {
-  db.getAllCards(req.query, 20)
+  cardsQueries.getAllCards(0, 20)
   .then(cards => {
     const tempateVar = {
       cards: cards,

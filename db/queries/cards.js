@@ -1,6 +1,7 @@
 const db = require('../connection');
 
 const getAllCards =  (min_price, max_price) => {
+  console.log(min_price, max_price)
   const queryString = `
     SELECT cards.*
     FROM cards
@@ -9,7 +10,7 @@ const getAllCards =  (min_price, max_price) => {
     return db
     .query(queryString, [max_price, min_price])
     .then((res) => res.rows)
-    .catch((err) => console.error("query error", err.stack));
+    .catch((err) => console.error("query error1", err.stack));
 }
 
 const getAllLikedCards= (user_id) => {
