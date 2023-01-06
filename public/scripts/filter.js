@@ -45,6 +45,24 @@ function deleteCards () {
 });
 }
 
+$(document).on("click", ".Mark-as-in-stock-button", function () {
+  console.log("test ➤");
+  console.log("hello", card_active)
+  editCards()
+  })
+
+function editCards () {
+  console.log('delete pls')
+  const card_active = $(".Mark-as-in-stock-button").val()
+  $.ajax({
+    url: `/api/cards/${card_active}`,
+    type: 'POST',
+    success: function(result) {
+        // Do something with the result
+    }
+});
+}
+
 function getCurrentUser() {
  return new Promise((resolve, reject) => {
   $.get('/users/currentUser')
@@ -104,7 +122,7 @@ function showAllItems() {
             </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${ (data[0].role_id === 2) ?
-                `${cardInRow.active ?'<button class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
+                `${cardInRow.active ?`<button value = ${cardInRow.active}class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>`:
                  '<button  class="Mark-as-out-stock-button" >Mark as in stock</button>'}`:
 
                  `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':

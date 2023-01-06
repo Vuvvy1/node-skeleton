@@ -30,4 +30,17 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.post('/:id', (req, res) => {
+  const cards_active = req.params.active
+  console.log('edit tester', cards_active)
+  console.log('hello')
+  dbQuery.query(`
+  SELECT cards.*
+  FROM cards
+  WHERE status = $1 `, [cards_active])
+  res.send({
+    message: "card edited"
+  })
+})
+
 module.exports = router;
