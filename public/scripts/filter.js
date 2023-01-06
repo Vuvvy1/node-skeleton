@@ -1,7 +1,7 @@
 
 let min_price = 0;
 let max_price = 100;
-const cardsPerRow = 6
+const cardsPerRow = 5
 const x = cardsPerRow
 
 
