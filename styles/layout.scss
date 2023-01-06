@@ -34,12 +34,18 @@ span {
 }
 .card{
   width: 80px;
+  margin-right: 150px;
 
+
+}
+.text-center {
+  width: 200px;
 }
 
 .addcard{
     margin-left: auto;
     opacity: 50;
+    margin-top: 50px;
 }
 
 .horizontal {
@@ -53,7 +59,18 @@ span {
 }
 
 .card-row {
+
   display: flex;
   gap: 16px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-right: 50px;
+}
+#cards-container{
+  border-left: 6px solid red;
+  padding-left: 50px;
+
 }
 
