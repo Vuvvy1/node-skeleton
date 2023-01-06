@@ -49,6 +49,7 @@ function showAllItems() {
             <div >
               <a  href="" > <i data-id = "${cardInRow.id} " class="fa-regular fa-heart card-like-icon"></i>
               </a>
+              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
               $${cardInRow.cost}.00
               <button type="submit" class="login-button">Add to cart</button>
             </div>
@@ -106,6 +107,7 @@ function showAllFiltered() {
               ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
               <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
               </a>
+              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments"></i> </a>
           </div>
         `
       }
