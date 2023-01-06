@@ -34,6 +34,7 @@ $(document).on("click", ".delete-button", function () {
   })
 
 function deleteCards () {
+  console.log('delete pls')
   const card_id = $(".delete-button").val()
   $.ajax({
     url: `/api/cards/${card_id}`,
@@ -103,13 +104,13 @@ function showAllItems() {
             </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${ (data[0].role_id === 2) ?
-                `${cardInRow.active ?'<button type="submit" class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
-                 '<button type="submit" class="Mark-as-out-stock-button" >Mark as in stock</button>'}`:
+                `${cardInRow.active ?'<button class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
+                 '<button  class="Mark-as-out-stock-button" >Mark as in stock</button>'}`:
 
-                 `${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>':
+                 `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':
                   '<box style="color: red;">Sold Out</box>'}`}
 
-              ${ (data[0].role_id === 2) ?'<button value = ${cardInRow.id} class="delete-button">Delete</button>':``}
+              ${ (data[0].role_id === 2) ?`<button value = ${cardInRow.id} class="delete-button">Delete</button>`:''}
 
             </div>
           </div>

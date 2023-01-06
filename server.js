@@ -59,6 +59,8 @@ const adminPage = require('./routes/admin');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
+app.use('/api/cards', cardsRoutes);
+
 // app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 // app.use('/liked', likedRoutes);
@@ -71,14 +73,13 @@ app.use("/users", userRouter);
 // User favorites
 const favorites = express.Router();
 likedRoutes(favorites, db);
-app.use("/liked", favorites);
+app.use("/likes", favorites);
 
 // admin view
 const adminView = express.Router();
 adminPage(adminView, db);
 app.use("/admin", adminView);
 
-app.use('/api/cards', cardsRoutes);
 
 
 // Note: mount other resources here, using the same pattern above
