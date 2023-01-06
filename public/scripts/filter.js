@@ -101,7 +101,7 @@ function showAllItems() {
             <div >
             <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
             </a>
-            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
+            <a  href="/messages/${cardInRow.id}" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${ (data[0].role_id === 2) ?
                 `${cardInRow.active ?'<button type="submit" class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
@@ -120,7 +120,9 @@ function showAllItems() {
 
         // Append the row to the cardsContainer
         $(rowHtml).appendTo(cardsContainer)
+
       }
+      addLikeEventListener()
     })
   }
 

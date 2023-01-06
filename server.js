@@ -132,7 +132,7 @@ app.get('/', (req, res) => {
 // });
 
 app.get('/adminPage', (req, res) => {
-  db.getAllCards(0, 20)
+  cardsQueries.getAllCards(0, 20)
   .then(cards => {
     const tempateVar = {
       cards: cards,

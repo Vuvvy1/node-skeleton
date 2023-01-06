@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const cardsQueries = require('../db/queries/cards');
 const cookieSession = require("cookie-session");
+const db = require('../db/connection')
 
 module.exports = function(router, db) {
 
@@ -26,7 +27,7 @@ router.post("/login", (req, res) => {
   const user_id = req.body.user_id;
 
   req.session.user_id = user_id;
-  db.getUserWithId(user_id)
+  cardsQueries.getUserWithId(user_id)
     .then(user => {
       // console.log(user);
       if (!user) {
