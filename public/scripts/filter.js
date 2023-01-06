@@ -131,7 +131,7 @@ function showAllItems() {
           <a style='color: green;'> $${cardInRow.cost}.00 </a>
           <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
           </a>
-          <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
+          <a  href="/messages/${cardInRow.id}" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
           ${ (data[0].role_id === 1) ? `${cardInRow.active ? '<button  class="buy-button">Add to cart</button>':
           '<box class="Sold-Out"style="color: red;">Sold Out</box>'}`:''}
             </div>
