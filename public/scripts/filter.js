@@ -82,8 +82,8 @@ function showAllItems() {
             <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
             <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
             <div >
-              <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
-              </a>
+            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
+            </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>': '<box style="color: red;">Sold Out</box>'}
               ${ (data[0].role_id = 2) ?'<button type="submit" class="buy-button">Delete</button>':``}
@@ -135,14 +135,13 @@ function showAllFiltered() {
 
       for (const cardInRow of cardRow) {
         rowHtml += `
-        <div class="card-body">
-          <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'> Sold Out</a>"}</h2>
-          <img src="${cardInRow.thumbnail_photo_url}"/>
-          <div >
-            <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>
-            </a>
-            $${cardInRow.cost}.00
-            <button type="submit" class="login-button">Add to cart</button>
+          <div class="card-body">
+            <h2 class="card-title">${cardInRow.title}</h2>
+            <img src="${cardInRow.thumbnail_photo_url}"/>
+            <div >$${cardInRow.cost}.00</div>
+              ${cardInRow.active ? "": "<h3>Sold Out</h3>"}
+              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
+              </a>
           </div>
         </div>
         `

@@ -1,17 +1,16 @@
 const express = require('express');
 const router  = express.Router();
-const baddb = require('../database'); //refactor to use db folder
 const db = require('../db/connection');
+const cardsQueries = require('../db/queries/cards')
 
-module.exports = function(router, db) {
-
+module.exports = function(router, db){
 router.get('/', (req, res) => {
   console.log("getAllLikedCards");
   const user_id = 1 //bc no cookies
-  baddb.getAllLikedCards(user_id)
+  cardsQueries.getAllLikedCards(user_id)
   .then(cards => {
     console.log("cards" , cards)
-    const tempateVar = {cards: cards}
+    const tempateVar = {cards: cards, userID: true}
     res.render('liked', tempateVar); //not a path its a template
     // res.send({cards})
   })
@@ -27,7 +26,6 @@ router.get('/', (req, res) => {
 
 // post favourites route
 
-// module.exports = router;
 router.post("/", (req,res) =>{
   console.log(req.body)
   const cards_id = req.body.card_id
@@ -37,14 +35,7 @@ router.post("/", (req,res) =>{
     message: "card liked"
   })
 })
+}
 
-};
-
-
-// need to join tables to see both favourites as well as the cards joined
-// change the way we are rendering each items (liked.ejs)
-//we can only like the same element once
-//const users_id = 1 : implemet cookie session package, change hard coded to the req.session.user_id property.
-
-//
+// module.exports = router;
 
