@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../database');
+const cardsQueries = require('../db/queries/cards');
 const cookieSession = require("cookie-session");
 
 module.exports = function(router, db) {
@@ -55,12 +55,12 @@ router.post("/login", (req, res) => {
 router.get('/currentUser', (req, res) => {
   if(req.session.user_id){
     console.log("req.session.user_id ➤", req.session.user_id)
-    db.getUserWithId(req.session.user_id)
+    cardsQueries.getUserWithId(req.session.user_id)
     .then(user => {
       res.json(user)
     })
   }else{
-  db.getUserWithId('Guest')
+    cardsQueries.getUserWithId('Guest')
   .then(user => {
     res.json(user)
   })}

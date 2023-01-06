@@ -3,7 +3,7 @@ $("#cards-container").click(".chat-icon", function (event) {
   const dataId = $(event.target).attr("data-id");
   // if (!$(event.target).hasClass("liked")) {
     $.ajax({
-      url: "/liked",
+      url: "/messages",
       method: "POST",
       data: {
         card_id: dataId, // access to card ID
@@ -19,7 +19,6 @@ $("#cards-container").click(".chat-icon", function (event) {
 
 });
 
-class="fa-regular fa-comments"></i> </a>
 
 
 //save message

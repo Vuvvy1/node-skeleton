@@ -99,12 +99,9 @@ function showAllItems() {
             <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
             <img class="card-picture" "submit()" ${cardInRow.active ? "": "id='no-stock'"}src="${cardInRow.thumbnail_photo_url}" tabindex="0"/>
             <div >
-              <a  href="" > <i data-id = "${cardInRow.id} " class="fa-regular fa-heart card-like-icon"></i>
-              </a>
-              <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a> <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
-              $${cardInRow.cost}.00
-              <button type="submit" class="login-button">Add to cart</button>
-           
+            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-heart card-like-icon"></i>
+            </a>
+            <a  href="" > <i data-id = "${cardInRow.id}" class="fa-regular fa-comments chat-icon"></i> </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${ (data[0].role_id === 2) ?
                 `${cardInRow.active ?'<button type="submit" class="Mark-as-in-stock-button" <box style="color: red;">Mark as out of stock</button>':
