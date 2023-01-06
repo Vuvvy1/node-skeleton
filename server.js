@@ -74,8 +74,7 @@ app.use("/users", userRouter);
 
 // User favorites
 const favorites = express.Router();
-likedRoutes(favorites, db);
-app.use("/likes", favorites);
+app.use("/liked",likedRoutes(favorites, db));
 
 // admin view
 const adminView = express.Router();
