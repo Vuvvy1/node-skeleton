@@ -27,17 +27,49 @@ $(document).ready(function () {
 
 
 
+function getCurrentUser() {
+ return new Promise((resolve, reject) => {
+  $.get('/users/currentUser')
+ .then((data) => {
+   console.log("user1 ➤", data);
+    resolve(data)
+ })
+.catch((error) => {
+  reject(error)
+
+  })
+})
+};
+
+function getCards() {
+  return new Promise((resolve, reject) => {
+   $.get('/api/cards')
+  .then((data) => {
+    console.log("user1 ➤", data);
+     resolve(data)
+  })
+ .catch((error) => {
+   reject(error)
+
+   })
+ })
+ };
+
+
+
+
 
 function showAllItems() {
-  $.get('/api/cards',
-  (data) => {
+  Promise.all([getCurrentUser(), getCards()])
+  .then(data => {
     const cardsContainer = $("#cards-container")
-
+    console.log("data ➤", data);
     // Bucketing cards into rows
     const cardRows = []
-
-    for (let i = 0; i < data.cards.length; i++) { // i = 1
-      cardRows[i] = data.cards.slice(i * x, i * x + x) // 5, 10
+    console.log("data[0] ➤", data[0]);
+    console.log("data[1] ➤", data[1]);
+    for (let i = 0; i < data[1].cards.length; i++) { // i = 1
+      cardRows[i] = data[1].cards.slice(i * x, i * x + x) // 5, 10
     }
 
     for (const cardRow of cardRows) {
@@ -54,6 +86,7 @@ function showAllItems() {
               </a>
               <a style='color: green;'> $${cardInRow.cost}.00 </a>
               ${cardInRow.active ? '<button type="submit" class="buy-button">Add to cart</button>': '<box style="color: red;">Sold Out</box>'}
+              ${ (data[0].role_id = 2) ?'<button type="submit" class="buy-button">Delete</button>':``}
 
             </div>
           </div>
@@ -66,6 +99,8 @@ function showAllItems() {
       }
     })
   }
+
+
   //   <div class="card-body">
   //   <h2 class="card-title"><%= cards[i].title %></h2>
   //   <img src="<%- cards[i].thumbnail_photo_url %>"/>
@@ -101,7 +136,7 @@ function showAllFiltered() {
       for (const cardInRow of cardRow) {
         rowHtml += `
         <div class="card-body">
-          <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'>    Sold Out</a>"}</h2>
+          <h2 class="card-title">${cardInRow.title}${cardInRow.active ? "": "<a style='color: red;'> Sold Out</a>"}</h2>
           <img src="${cardInRow.thumbnail_photo_url}"/>
           <div >
             <a  href="" > <i data-id = "<%- cards[i].id %>" class="fa-regular fa-heart card-like-icon"></i>

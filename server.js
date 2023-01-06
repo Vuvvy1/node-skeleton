@@ -88,6 +88,8 @@ app.use('/api/cards', cardsRoutes);
 // });
 app.get('/', (req, res) => {
   console.log("getAllCards");
+  console.log("req.session.user_id ➤", req.session.user_id);
+  if(!req.session.user_id){req.session.user_id = 'Guest'} // ducttape fix
     const tempateVar = {
       userID: req.session.user_id
     };

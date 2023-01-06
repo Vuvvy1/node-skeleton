@@ -51,6 +51,27 @@ router.post("/login", (req, res) => {
         .json({ error: err.message });
     });
 });
+
+router.get('/currentUser', (req, res) => {
+  if(req.session.user_id){
+    console.log("req.session.user_id ➤", req.session.user_id)
+    db.getUserWithId(req.session.user_id)
+    .then(user => {
+      res.json(user)
+    })
+  }else{
+  db.getUserWithId('Guest')
+  .then(user => {
+    res.json(user)
+  })}
+});
+
+// else{
+//   db.getUserWithId(req.session.user_id)
+//   .then(user => {
+//     res.json(user)
+// })}
+
 // router.get("/register", (req, res) => {
 //   res.render('register');
 // });

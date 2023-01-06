@@ -29,6 +29,20 @@ router.get('/adminPage', (req, res) => {
   res.render('adminPage')
 });
 
+router.post("/", (req,res) =>{
+  console.log(req.body)
+  const cards_id = req.body.card_id
+  const users_id = 1
+  // db.query(`INSERT INTO favourite_items (cards_id, users_id) VALUES ($1, $2);`, [cards_id, users_id])
+
+  db.query(`INSERT INTO cards (title, thumbnail_photo_url, cost, active)
+    VALUES ($1, $2, $3);)`,[cards_id, users_id])
+  res.send({
+    message: "card liked"
+  })
+})
+
+
 return router;
 
 };
